@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f8fa">
+  <meta name="description" content="小红书城市纯玩计划：街头巷尾，发呆补给站，测测你的玩起人格。">
+  <title>城市纯玩计划 · 小红书</title>
+  <link rel="preload" as="image" href="assets/page-1-clean.webp">
+  <style>
+    :root { --scale: 1; }
+    * { box-sizing: border-box; }
+    html { background: #f5f8fa; -webkit-text-size-adjust: 100%; }
+    body { margin: 0; min-width: 280px; overflow-x: hidden; background: #f5f8fa; }
+    #stage { position: relative; width: 1080px; height: 5760px; margin: 0 auto; }
+    #art { position: relative; width: 1080px; height: 5760px; transform: scale(var(--scale)); transform-origin: 0 0; isolation: isolate; }
+    html:not(.ready) #stage { visibility: hidden; }
+    .tile, .art-layer { position: absolute; display: block; user-select: none; -webkit-user-drag: none; pointer-events: none; }
+    .tile { left: 0; width: 1080px; height: 1440px; }
+    .tile:nth-child(1) { top: 0; }
+    .tile:nth-child(2) { top: 1440px; }
+    .tile:nth-child(3) { top: 2880px; }
+    .tile:nth-child(4) { top: 4320px; }
+    .micro { opacity: 1; transform-origin: center center; will-change: transform; }
+    .bike { left: 205px; top: 260px; width: 405px; height: 410px; animation: pedal 2.25s ease-in-out infinite; }
+    .journal { left: 540px; top: 430px; width: 355px; height: 320px; animation: journal 3.4s ease-in-out -.7s infinite; }
+    .chair { left: 35px; top: 640px; width: 300px; height: 285px; animation: chair 3.1s ease-in-out -1.2s infinite; }
+    .walker { left: 315px; top: 575px; width: 405px; height: 510px; animation: walker 2.55s ease-in-out -.4s infinite; }
+    .dog { left: 650px; top: 710px; width: 380px; height: 390px; animation: dog 2.8s ease-in-out -1s infinite; }
+    .runner { left: 155px; top: 915px; width: 470px; height: 270px; animation: runner 2.6s ease-in-out -1.35s infinite; }
+    .lounger { left: 440px; top: 1050px; width: 520px; height: 330px; animation: breathe 4.4s ease-in-out -2s infinite; }
+    .motion-part { z-index: 2; will-change: transform; transform-origin: center center; }
+    .motion-shoes { left: 570px; top: 2334px; width: 154px; height: 86px; animation: shoe-twitch 7.2s ease-in-out infinite; }
+    .motion-spiral { left: 611px; top: 3208px; width: 105px; height: 94px; animation: spiral-turn 15s linear infinite; }
+    .motion-number-1 { left: 353px; top: 2296px; width: 88px; height: 88px; animation: badge-jitter 3.7s ease-in-out infinite; }
+    .motion-number-2 { left: 387px; top: 3213px; width: 88px; height: 88px; animation: badge-jitter 4.4s ease-in-out -1.5s infinite; }
+    .motion-number-3 { left: 335px; top: 4200px; width: 88px; height: 88px; animation: badge-jitter 4s ease-in-out -2.4s infinite; }
+    .motion-hill-sitter { left: 690px; top: 4850px; width: 315px; height: 370px; animation: hill-sit 5.2s ease-in-out -.6s infinite; }
+    .motion-hill-lounger { left: 120px; top: 5290px; width: 530px; height: 300px; animation: hill-rest 6.4s ease-in-out -2.1s infinite; }
+    .motion-road-1 { left: 635px; top: 2190px; width: 270px; height: 365px; animation: walk-forward 8.8s ease-in-out -.7s infinite; }
+    .motion-road-2 { left: 690px; top: 3035px; width: 320px; height: 385px; animation: walk-forward 10.6s ease-in-out -3.2s infinite; }
+    .motion-road-3 { left: 850px; top: 3860px; width: 170px; height: 370px; animation: walk-back 12.4s ease-in-out -2.5s infinite; }
+    .motion-road-4 { left: 675px; top: 3970px; width: 250px; height: 430px; animation: walk-back 9.7s ease-in-out -5.3s infinite; }
+    .motion-road-5 { left: 615px; top: 4310px; width: 400px; height: 390px; animation: walk-forward 13.1s ease-in-out -3.9s infinite; }
+    .motion-road-6 { left: 35px; top: 4190px; width: 430px; height: 490px; animation: walk-back 11.5s ease-in-out -4.8s infinite; }
+    .accent-text { opacity: .14; animation: lettering 4.2s ease-in-out infinite; }
+    .word-one { left: 435px; top: 2330px; width: 270px; height: 176px; }
+    .word-two { left: 460px; top: 3280px; width: 170px; height: 152px; animation-delay: -1.4s; }
+    .word-three { left: 405px; top: 4230px; width: 280px; height: 227px; animation-delay: -2.3s; }
+    @keyframes pedal {
+      0%, 100% { transform: translate(0, 0) rotate(-.7deg); }
+      28% { transform: translate(26px, -22px) rotate(3deg); }
+      62% { transform: translate(-17px, 16px) rotate(-2.5deg); }
+    }
+    @keyframes journal {
+      0%, 100% { transform: translateY(0) rotate(-.4deg); }
+      50% { transform: translate(13px, -15px) rotate(1.7deg); }
+    }
+    @keyframes chair {
+      0%, 100% { transform: translateY(0) rotate(-1deg); }
+      50% { transform: translate(19px, -19px) rotate(3deg); }
+    }
+    @keyframes walker {
+      0%, 100% { transform: translate(0, 0) rotate(-.6deg); }
+      50% { transform: translate(23px, -19px) rotate(2deg); }
+    }
+    @keyframes dog {
+      0%, 100% { transform: translate(0, 0) rotate(.7deg); }
+      50% { transform: translate(-20px, -14px) rotate(-2deg); }
+    }
+    @keyframes runner {
+      0%, 100% { transform: translate(0, 0) rotate(-.8deg); }
+      50% { transform: translate(25px, -16px) rotate(2deg); }
+    }
+    @keyframes breathe {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-13px) scale(1.02); }
+    }
+    @keyframes walk-forward { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(20px, -23px); } }
+    @keyframes walk-back { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-18px, 22px); } }
+    @keyframes hill-sit { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-12px) rotate(-1deg); } }
+    @keyframes hill-rest { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-9px) scale(1.012); } }
+    @keyframes spiral-turn { to { transform: rotate(360deg); } }
+    @keyframes shoe-twitch { 0%, 65%, 78%, 100% { transform: rotate(0) translateY(0); } 68% { transform: rotate(3deg) translateY(-3px); } 71% { transform: rotate(-2deg) translateY(1px); } 74% { transform: rotate(1.5deg); } }
+    @keyframes badge-jitter {
+      0%, 64%, 81%, 100% { transform: translate(0, 0) rotate(0); }
+      67% { transform: translate(-5px, 2px) rotate(-4deg); }
+      70% { transform: translate(5px, -2px) rotate(4deg); }
+      73% { transform: translate(-4px, 1px) rotate(-3deg); }
+      76% { transform: translate(3px, -1px) rotate(2deg); }
+    }
+    @keyframes lettering {
+      0%, 100% { transform: translateY(0) rotate(-.3deg); opacity: .10; }
+      50% { transform: translateY(-3px) rotate(.35deg); opacity: .23; }
+    }
+    .carousel { position: absolute; width: 870px; height: 620px; left: 105px; overflow: hidden; perspective: 1100px; cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+    .carousel:active { cursor: grabbing; }
+    .carousel[data-row="street"] { top: 2580px; }
+    .carousel[data-row="rest"] { top: 3575px; }
+    .slot-paper, .cover-card { position: absolute; top: 80px; width: 300px; height: 483px; border-radius: 9px; background-color: #f2f4f5; background-image: radial-gradient(#a7afb5 .75px, transparent 1.2px); background-size: 9px 9px; }
+    .slot-paper { pointer-events: none; }
+    .slot-paper:first-child { left: 73px; }
+    .carousel[data-row="street"] .slot-paper:nth-child(2) { left: 491px; }
+    .carousel[data-row="rest"] .slot-paper:nth-child(2) { left: 500px; }
+    .cover-card { left: 0; overflow: hidden; transform-style: preserve-3d; transform-origin: center center; backface-visibility: hidden; cursor: pointer; will-change: transform,opacity; }
+    .cover-card img { display: block; width: 300px; height: 483px; pointer-events: none; user-select: none; -webkit-user-drag: none; }
+    .carousel:focus-visible { outline: 4px dashed #1b85dc; outline-offset: -5px; }
+    .test-link { position: absolute; z-index: 5; left: 238px; top: 4635px; width: 644px; height: 310px; display: block; color: transparent; font-size: 0; -webkit-tap-highlight-color: transparent; }
+    .test-link img { position: absolute; display: block; pointer-events: none; user-select: none; -webkit-user-drag: none; }
+    .cta-yellow { left: 0; top: 0; width: 644px; height: 310px; }
+    .cta-type { left: 164px; top: 86px; width: 287px; height: 151px; }
+    .test-link:focus-visible { outline: 5px solid #237cef; outline-offset: 3px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    @media (prefers-reduced-motion: reduce) {
+      .micro, .motion-part, .accent-text { animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <main id="stage" aria-label="城市纯玩计划长图，可上下滑动浏览">
+    <div id="art">
+      <img class="tile" src="assets/page-1-clean.webp" width="1080" height="1440" alt="城市纯玩计划首页：城市地图与七位游玩中的人物" fetchpriority="high">
+      <img class="tile" src="assets/page-2-clean.webp" width="1080" height="1440" alt="活动简介与街头巷尾玩法" loading="lazy">
+      <img class="tile" src="assets/page-3-clean.webp" width="1080" height="1440" alt="红薯街头玩法与发呆补给站" loading="lazy">
+      <img class="tile" src="assets/page-4-clean.webp" width="1080" height="1440" alt="测测你的玩起人格，点击开测" loading="lazy">
+
+      <img class="art-layer micro bike" src="assets/figure-bike.webp" alt="">
+      <img class="art-layer micro journal" src="assets/figure-journal.webp" alt="">
+      <img class="art-layer micro chair" src="assets/figure-chair.webp" alt="">
+      <img class="art-layer micro walker" src="assets/figure-walker.webp" alt="">
+      <img class="art-layer micro dog" src="assets/figure-dog.webp" alt="">
+      <img class="art-layer micro runner" src="assets/figure-runner.webp" alt="">
+      <img class="art-layer micro lounger" src="assets/figure-lounger.webp" alt="">
+      <img class="art-layer accent-text word-one" src="assets/asset-37.webp" alt="" loading="lazy">
+      <img class="art-layer accent-text word-two" src="assets/asset-36.webp" alt="" loading="lazy">
+      <img class="art-layer accent-text word-three" src="assets/asset-46.webp" alt="" loading="lazy">
+      <img class="art-layer motion-part motion-shoes" src="assets/motion-shoes.webp" alt="" loading="lazy">
+      <img class="art-layer motion-part motion-spiral" src="assets/motion-spiral.webp" alt="" loading="lazy">
+      <img class="art-layer motion-part motion-number-1" src="assets/motion-number-1.webp" alt="" loading="lazy">
+      <img class="art-layer motion-part motion-number-2" src="assets/motion-number-2.webp" alt="" loading="lazy">
+      <img class="art-layer motion-part motion-number-3" src="assets/motion-number-3.webp" alt="" loading="lazy">
+      <img class="art-layer motion-part motion-road-1" src="assets/motion-road-1.webp" alt="" loading="lazy">
+      <img class="art-layer motion-part motion-road-2" src="assets/motion-road-2.webp" alt="" loading="lazy">
+      <img class="art-layer motion-part motion-road-3" src="assets/motion-road-3.webp" alt="" loading="lazy">
+      <img class="art-layer motion-part motion-road-4" src="assets/motion-road-4.webp" alt="" loading="lazy">
+      <img class="art-layer motion-part motion-road-5" src="assets/motion-road-5.webp" alt="" loading="lazy">
+      <img class="art-layer motion-part motion-road-6" src="assets/motion-road-6.webp" alt="" loading="lazy">
+      <img class="art-layer motion-part motion-hill-sitter" src="assets/motion-hill-sitter.webp" alt="" loading="lazy">
+      <img class="art-layer motion-part motion-hill-lounger" src="assets/motion-hill-lounger.webp" alt="" loading="lazy">
+
+      <div class="carousel" data-row="street" role="group" tabindex="0" aria-label="街头巷尾红薯照片，左右滑动切换 A、B、C">
+        <div class="slot-paper" aria-hidden="true"></div><div class="slot-paper" aria-hidden="true"></div>
+        <div class="cover-card" data-card="0"><img src="assets/asset-40.webp" alt="红薯 A 街头照片"></div>
+        <div class="cover-card" data-card="1"><img src="assets/asset-41.webp" alt="红薯 B 街头照片"></div>
+        <div class="cover-card" data-card="2"><img src="assets/asset-42.webp" alt="红薯 C 街头照片"></div>
+        <span class="sr-only" aria-live="polite"></span>
+      </div>
+      <div class="carousel" data-row="rest" role="group" tabindex="0" aria-label="发呆补给站红薯照片，左右滑动切换 A、B、C">
+        <div class="slot-paper" aria-hidden="true"></div><div class="slot-paper" aria-hidden="true"></div>
+        <div class="cover-card" data-card="0"><img src="assets/asset-43.webp" alt="红薯 A 发呆照片"></div>
+        <div class="cover-card" data-card="1"><img src="assets/asset-44.webp" alt="红薯 B 发呆照片"></div>
+        <div class="cover-card" data-card="2"><img src="assets/asset-45.webp" alt="红薯 C 发呆照片"></div>
+        <span class="sr-only" aria-live="polite"></span>
+      </div>
+      <a class="test-link" href="../index.html" aria-label="点击开测，进入城市纯玩计划人格测试"><img class="cta-yellow" src="assets/cta-yellow.webp" alt=""><img class="cta-type" src="assets/cta-type.webp" alt="">点击开测</a>
+    </div>
+  </main>
+  <script>
+    (() => {
+      const DESIGN_WIDTH = 1080;
+      const DESIGN_HEIGHT = 5760;
+      const stage = document.getElementById('stage');
+      function fit() {
+        const width = Math.min(window.innerWidth, DESIGN_WIDTH);
+        const scale = width / DESIGN_WIDTH;
+        document.documentElement.style.setProperty('--scale', scale);
+        stage.style.width = `${width}px`;
+        stage.style.height = `${DESIGN_HEIGHT * scale}px`;
+        document.documentElement.classList.add('ready');
+      }
+      fit();
+      window.addEventListener('resize', fit, { passive: true });
+
+      document.querySelectorAll('.carousel').forEach(carousel => {
+        const cards = [...carousel.querySelectorAll('.cover-card')];
+        const live = carousel.querySelector('[aria-live]');
+        const rightX = carousel.dataset.row === 'street' ? 491 : 500;
+        const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+        let index = 0;
+        let start = null;
+        let busy = false;
+        let queued = 0;
+        let suppressClickUntil = 0;
+        let wheelLock = false;
+        const poses = {
+          left: { x: 73, z: 0, turn: 0, scale: 1, opacity: 1 },
+          right: { x: rightX, z: 0, turn: 0, scale: 1, opacity: 1 },
+          before: { x: -185, z: -75, turn: 26, scale: .82, opacity: 0 },
+          after: { x: rightX + 185, z: -75, turn: -26, scale: .82, opacity: 0 }
+        };
+        const frame = (pose, shadow = false) => ({
+          transform: `translate3d(${pose.x}px, 0, ${pose.z}px) rotateY(${pose.turn}deg) scale(${pose.scale})`,
+          opacity: pose.opacity,
+          filter: shadow ? 'drop-shadow(0 15px 11px #365b6a27)' : 'drop-shadow(0 0 0 #365b6a00)'
+        });
+        function place(card, pose) {
+          const style = frame(pose);
+          card.style.transform = style.transform;
+          card.style.opacity = style.opacity;
+          card.style.filter = style.filter;
+          card.style.pointerEvents = pose.opacity === 0 ? 'none' : 'auto';
+        }
+        function settle() {
+          cards.forEach((card, i) => {
+            const offset = (i - index + 3) % 3;
+            place(card, offset === 0 ? poses.left : offset === 1 ? poses.right : poses.after);
+            card.style.zIndex = offset === 0 ? '3' : offset === 1 ? '2' : '1';
+          });
+          live.textContent = `当前显示红薯 ${'ABC'[index]} 和红薯 ${'ABC'[(index + 1) % 3]}`;
+        }
+        async function show(direction) {
+          if (busy) { queued = direction; return; }
+          if (reduced.matches || !Element.prototype.animate) {
+            index = (index + direction + 3) % 3;
+            settle();
+            return;
+          }
+          busy = true;
+          const first = cards[index];
+          const second = cards[(index + 1) % 3];
+          const third = cards[(index + 2) % 3];
+          const outgoing = direction > 0 ? first : second;
+          const gliding = direction > 0 ? second : first;
+          const incoming = third;
+          const outFrom = direction > 0 ? poses.left : poses.right;
+          const outTo = direction > 0 ? poses.before : poses.after;
+          const glideFrom = direction > 0 ? poses.right : poses.left;
+          const glideTo = direction > 0 ? poses.left : poses.right;
+          const inFrom = direction > 0 ? poses.after : poses.before;
+          const inTo = direction > 0 ? poses.right : poses.left;
+          place(incoming, inFrom);
+          incoming.style.zIndex = '5';
+          gliding.style.zIndex = '4';
+          outgoing.style.zIndex = '3';
+          incoming.style.pointerEvents = 'none';
+          gliding.style.pointerEvents = 'none';
+          outgoing.style.pointerEvents = 'none';
+          const options = { duration: 640, easing: 'cubic-bezier(.2,.76,.14,1)', fill: 'forwards' };
+          const mid = { x: (glideFrom.x + glideTo.x) / 2, z: 64, turn: direction > 0 ? 9 : -9, scale: 1.045, opacity: 1 };
+          const animations = [
+            outgoing.animate([frame(outFrom), frame(outTo)], options),
+            gliding.animate([frame(glideFrom), { ...frame(mid, true), offset: .55 }, frame(glideTo)], options),
+            incoming.animate([frame(inFrom), { ...frame({ ...inTo, x: inTo.x + (direction > 0 ? 10 : -10), z: 35, turn: direction > 0 ? -5 : 5, scale: 1.01, opacity: 1 }, true), offset: .76 }, frame(inTo)], options)
+          ];
+          await Promise.all(animations.map(animation => animation.finished.catch(() => {})));
+          index = (index + direction + 3) % 3;
+          settle();
+          animations.forEach(animation => animation.cancel());
+          busy = false;
+          if (queued) {
+            const next = queued;
+            queued = 0;
+            show(next);
+          }
+        }
+        settle();
+        carousel.addEventListener('pointerdown', event => {
+          if (!event.isPrimary) return;
+          start = { x: event.clientX, y: event.clientY };
+        });
+        window.addEventListener('pointerup', event => {
+          if (!start) return;
+          const dx = event.clientX - start.x;
+          const dy = event.clientY - start.y;
+          start = null;
+          if (Math.abs(dx) > 24 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+            suppressClickUntil = performance.now() + 400;
+            show(dx < 0 ? 1 : -1);
+          }
+        });
+        window.addEventListener('pointercancel', () => { start = null; });
+        carousel.addEventListener('click', event => {
+          if (performance.now() < suppressClickUntil) return;
+          const card = event.target.closest('.cover-card');
+          if (!card) return;
+          const selected = Number(card.dataset.card);
+          if (selected === index) show(-1);
+          else if (selected === (index + 1) % 3) show(1);
+        });
+        carousel.addEventListener('keydown', event => {
+          if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+            event.preventDefault();
+            show(event.key === 'ArrowLeft' ? 1 : -1);
+          }
+        });
+        carousel.addEventListener('wheel', event => {
+          if (Math.abs(event.deltaX) < 12 || Math.abs(event.deltaX) <= Math.abs(event.deltaY)) return;
+          event.preventDefault();
+          if (wheelLock) return;
+          show(event.deltaX > 0 ? 1 : -1);
+          wheelLock = true;
+          setTimeout(() => { wheelLock = false; }, 520);
+        }, { passive: false });
+      });
+    })();
+  </script>
+</body>
+</html>
