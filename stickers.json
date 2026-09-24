@@ -1,0 +1,134 @@
+[
+  {
+    "id": "coffee",
+    "label": "咖啡",
+    "width": 239,
+    "height": 223,
+    "src": "assets/coffee.png",
+    "peelOrigin": {
+      "x": 0.7531,
+      "y": 0.852
+    }
+  },
+  {
+    "id": "riceball",
+    "label": "饭团",
+    "width": 230,
+    "height": 205,
+    "src": "assets/riceball.png",
+    "peelOrigin": {
+      "x": 0.913,
+      "y": 0.8829
+    }
+  },
+  {
+    "id": "icecream",
+    "label": "冰淇淋",
+    "width": 174,
+    "height": 275,
+    "src": "assets/icecream.png",
+    "peelOrigin": {
+      "x": 0.9253,
+      "y": 0.5818
+    }
+  },
+  {
+    "id": "soda",
+    "label": "汽水",
+    "width": 194,
+    "height": 246,
+    "src": "assets/soda.png",
+    "peelOrigin": {
+      "x": 0.7887,
+      "y": 0.8821
+    }
+  },
+  {
+    "id": "camera",
+    "label": "相机",
+    "width": 289,
+    "height": 196,
+    "src": "assets/camera.png",
+    "peelOrigin": {
+      "x": 0.917,
+      "y": 0.8724
+    }
+  },
+  {
+    "id": "pen",
+    "label": "钢笔",
+    "width": 236,
+    "height": 240,
+    "src": "assets/pen.png",
+    "peelOrigin": {
+      "x": 0.6441,
+      "y": 0.575
+    }
+  },
+  {
+    "id": "frisbee",
+    "label": "飞盘",
+    "width": 260,
+    "height": 201,
+    "src": "assets/frisbee.png",
+    "peelOrigin": {
+      "x": 0.7923,
+      "y": 0.7214
+    }
+  },
+  {
+    "id": "headphones",
+    "label": "耳机",
+    "width": 256,
+    "height": 240,
+    "src": "assets/headphones.png",
+    "peelOrigin": {
+      "x": 0.8516,
+      "y": 0.9042
+    }
+  },
+  {
+    "id": "sneaker",
+    "label": "运动鞋",
+    "width": 270,
+    "height": 213,
+    "src": "assets/sneaker.png",
+    "peelOrigin": {
+      "x": 0.9259,
+      "y": 0.662
+    }
+  },
+  {
+    "id": "rope",
+    "label": "绳索",
+    "width": 285,
+    "height": 221,
+    "src": "assets/rope.png",
+    "peelOrigin": {
+      "x": 0.8526,
+      "y": 0.6968
+    }
+  },
+  {
+    "id": "helmet",
+    "label": "头盔",
+    "width": 254,
+    "height": 235,
+    "src": "assets/helmet.png",
+    "peelOrigin": {
+      "x": 0.6496,
+      "y": 0.9106
+    }
+  },
+  {
+    "id": "skateboard",
+    "label": "滑板",
+    "width": 320,
+    "height": 233,
+    "src": "assets/skateboard.png",
+    "peelOrigin": {
+      "x": 0.8906,
+      "y": 0.6009
+    }
+  }
+]
