@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#f5f8fa">
   <meta name="description" content="小红书城市纯玩计划：街头巷尾，发呆补给站，测测你的玩起人格。">
   <title>城市纯玩计划 · 小红书</title>
-  <link rel="preload" as="image" href="assets/page-1-clean.webp">
+  <link rel="preload" as="image" href="assets/page-1-yellow-title-base.webp">
   <style>
     :root { --scale: 1; }
     * { box-sizing: border-box; }
@@ -22,10 +22,17 @@
     .tile:nth-child(3) { top: 2880px; }
     .tile:nth-child(4) { top: 4320px; }
     .micro { opacity: 1; transform-origin: center center; will-change: transform; }
-    .bike { left: 205px; top: 260px; width: 405px; height: 410px; animation: pedal 2.25s ease-in-out infinite; }
-    .journal { left: 540px; top: 430px; width: 355px; height: 320px; animation: journal 3.4s ease-in-out -.7s infinite; }
+    .hero-title { left: 32px; top: -18px; width: 1016px; height: auto; }
+    .footer-search { left: 390px; top: 5562px; width: 300px; height: auto; }
+    .actor-rig { overflow: visible; }
+    .actor-rig > img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
+    .actor-rig[data-actor="walker"] > img { left: -7.901235%; top: -6.27451%; width: 115.802469%; height: 112.54902%; }
+    .actor-rig[data-actor="dog"] > img { left: -4.210526%; top: -4.102564%; width: 108.421053%; height: 108.205128%; }
+    .actor-rig[data-actor="lounger"] > img { left: -3.076923%; top: -4.848485%; width: 106.153846%; height: 109.69697%; }
+    .bike { left: 205px; top: 260px; width: 405px; height: 410px; animation: pedal 3.6s ease-in-out infinite; }
+    .journal { left: 540px; top: 430px; width: 355px; height: 320px; animation: journal 5.4s ease-in-out -.7s infinite; }
     .chair { left: 35px; top: 640px; width: 300px; height: 285px; animation: chair 3.1s ease-in-out -1.2s infinite; }
-    .walker { left: 315px; top: 575px; width: 405px; height: 510px; animation: walker 2.55s ease-in-out -.4s infinite; }
+    .walker { left: 315px; top: 575px; width: 405px; height: 510px; animation: walker 4.1s ease-in-out -.4s infinite; }
     .dog { left: 650px; top: 710px; width: 380px; height: 390px; animation: dog 2.8s ease-in-out -1s infinite; }
     .runner { left: 155px; top: 915px; width: 470px; height: 270px; animation: runner 2.6s ease-in-out -1.35s infinite; }
     .lounger { left: 440px; top: 1050px; width: 520px; height: 330px; animation: breathe 4.4s ease-in-out -2s infinite; }
@@ -35,14 +42,15 @@
     .motion-number-1 { left: 353px; top: 2296px; width: 88px; height: 88px; animation: badge-jitter 3.7s ease-in-out infinite; }
     .motion-number-2 { left: 387px; top: 3213px; width: 88px; height: 88px; animation: badge-jitter 4.4s ease-in-out -1.5s infinite; }
     .motion-number-3 { left: 335px; top: 4200px; width: 88px; height: 88px; animation: badge-jitter 4s ease-in-out -2.4s infinite; }
-    .motion-hill-sitter { left: 690px; top: 4850px; width: 315px; height: 370px; animation: hill-sit 5.2s ease-in-out -.6s infinite; }
-    .motion-hill-lounger { left: 120px; top: 5290px; width: 530px; height: 300px; animation: hill-rest 6.4s ease-in-out -2.1s infinite; }
-    .motion-road-1 { left: 635px; top: 2190px; width: 270px; height: 365px; animation: walk-forward 8.8s ease-in-out -.7s infinite; }
-    .motion-road-2 { left: 690px; top: 3035px; width: 320px; height: 385px; animation: walk-forward 10.6s ease-in-out -3.2s infinite; }
-    .motion-road-3 { left: 850px; top: 3860px; width: 170px; height: 370px; animation: walk-back 12.4s ease-in-out -2.5s infinite; }
-    .motion-road-4 { left: 675px; top: 3970px; width: 250px; height: 430px; animation: walk-back 9.7s ease-in-out -5.3s infinite; }
-    .motion-road-5 { left: 615px; top: 4310px; width: 400px; height: 390px; animation: walk-forward 13.1s ease-in-out -3.9s infinite; }
-    .motion-road-6 { left: 35px; top: 4190px; width: 430px; height: 490px; animation: walk-back 11.5s ease-in-out -4.8s infinite; }
+    .motion-hill-sitter { left: 726px; top: 4906px; width: 239px; height: 261px; }
+    .motion-hill-lounger { left: 159px; top: 5347px; width: 410px; height: 209px; }
+    .motion-road-yellow { left: 619px; top: 2204px; width: 365px; height: 342px; --road-x: -104px; --road-y: 142px; animation: road-stroll 10.6s cubic-bezier(.37,0,.63,1) -.8s infinite alternate; }
+    .motion-road-upper { left: 720px; top: 3082px; width: 284px; height: 267px; --road-x: -114px; --road-y: 146px; animation: road-stroll 11.8s cubic-bezier(.37,0,.63,1) -4.3s infinite alternate; }
+    .motion-road-left-pair { left: -45px; top: 3286px; width: 492px; height: 422px; --road-x: 60px; --road-y: -162px; animation: road-stroll 12.4s cubic-bezier(.37,0,.63,1) -2.5s infinite alternate; }
+    .motion-road-right-pair { left: 631px; top: 3930px; width: 520px; height: 430px; --road-x: -36px; --road-y: 154px; animation: road-stroll 13.2s cubic-bezier(.37,0,.63,1) -7.4s infinite alternate; }
+    .motion-road-lower { left: 716px; top: 4349px; width: 274px; height: 257px; --road-x: -110px; --road-y: 134px; animation: road-stroll 11.2s cubic-bezier(.37,0,.63,1) -3.9s infinite alternate; }
+    .motion-road-bottom-pair { left: 57px; top: 4319px; width: 386px; height: 367px; --road-x: 100px; --road-y: -144px; animation: road-stroll 12.8s cubic-bezier(.37,0,.63,1) -5.6s infinite alternate; }
+    @keyframes road-stroll { from { transform: translate(0, 0); } to { transform: translate(var(--road-x), var(--road-y)); } }
     .accent-text { opacity: .14; animation: lettering 4.2s ease-in-out infinite; }
     .word-one { left: 435px; top: 2330px; width: 270px; height: 176px; }
     .word-two { left: 460px; top: 3280px; width: 170px; height: 152px; animation-delay: -1.4s; }
@@ -97,40 +105,99 @@
     .carousel:active { cursor: grabbing; }
     .carousel[data-row="street"] { top: 2580px; }
     .carousel[data-row="rest"] { top: 3575px; }
-    .slot-paper, .cover-card { position: absolute; top: 80px; width: 300px; height: 483px; border-radius: 9px; background-color: #f2f4f5; background-image: radial-gradient(#a7afb5 .75px, transparent 1.2px); background-size: 9px 9px; }
-    .slot-paper { pointer-events: none; }
-    .slot-paper:first-child { left: 73px; }
-    .carousel[data-row="street"] .slot-paper:nth-child(2) { left: 491px; }
-    .carousel[data-row="rest"] .slot-paper:nth-child(2) { left: 500px; }
+    .cover-card { position: absolute; top: 80px; width: 300px; height: 483px; background: transparent; }
+    .carousel[data-row="rest"] .cover-card { top: 48px; }
     .cover-card { left: 0; overflow: hidden; transform-style: preserve-3d; transform-origin: center center; backface-visibility: hidden; cursor: pointer; will-change: transform,opacity; }
     .cover-card img { display: block; width: 300px; height: 483px; pointer-events: none; user-select: none; -webkit-user-drag: none; }
     .carousel:focus-visible { outline: 4px dashed #1b85dc; outline-offset: -5px; }
-    .test-link { position: absolute; z-index: 5; left: 238px; top: 4635px; width: 644px; height: 310px; display: block; color: transparent; font-size: 0; -webkit-tap-highlight-color: transparent; }
+    .test-anchor { position: absolute; left: 238px; top: 4635px; width: 644px; height: 310px; pointer-events: none; }
+    .test-link { position: fixed; z-index: 40; display: block; width: 644px; height: 310px; color: transparent; font-size: 0; -webkit-tap-highlight-color: transparent; }
+    .test-link[data-placement="docked"] { z-index: 10; }
+    .cta-art { position: absolute; inset: 0; display: block; transform-origin: 50% 55%; pointer-events: none; }
     .test-link img { position: absolute; display: block; pointer-events: none; user-select: none; -webkit-user-drag: none; }
-    .cta-yellow { left: 0; top: 0; width: 644px; height: 310px; }
-    .cta-type { left: 164px; top: 86px; width: 287px; height: 151px; }
+    .cta-yellow { left: 0; top: 0; width: 100%; height: 100%; }
+    .cta-type { left: 25.4658385%; top: 27.7419355%; width: 44.5652174%; height: 48.7096774%; }
+    .safe-bottom { position: fixed; height: env(safe-area-inset-bottom, 0px); width: 0; pointer-events: none; }
+    /* Only the parked CTA gets the drawing. The floating CTA is the top layer. */
+    .draw-arrow { position: absolute; z-index: 30; left: calc(650px * var(--scale)); top: calc(4483px * var(--scale)); width: calc(133.25px * var(--scale)); height: calc(237px * var(--scale)); visibility: hidden; pointer-events: none; }
+    .draw-arrow.is-available { visibility: visible; }
+    .draw-arrow svg { display: block; width: 100%; height: 100%; overflow: visible; }
+    .draw-arrow.is-active svg { transform-origin: 50% 70%; animation: arrow-wiggle 2s ease-out 1.8s infinite; }
+    .arrow-ink { fill: none; stroke: white; stroke-width: 72; stroke-linecap: round; stroke-linejoin: round; }
+    .draw-arrow.is-active .arrow-first { stroke-dasharray: 1; animation: arrow-first 2.8s linear 1 forwards; }
+    .draw-arrow.is-active .arrow-second { stroke-dasharray: 1; animation: arrow-second 2.8s linear 1 forwards; }
+    .draw-arrow.is-active .arrow-wing-left { stroke-dasharray: 1; animation: arrow-wing-left 2.8s linear 1 forwards; }
+    .draw-arrow.is-active .arrow-wing-right { stroke-dasharray: 1; animation: arrow-wing-right 2.8s linear 1 forwards; }
+    .draw-arrow.is-active .arrow-complete { animation: arrow-complete 2.8s steps(1,end) 1 forwards; }
+    .draw-arrow.is-active .arrow-courses { animation: arrow-courses 2.8s steps(1,end) 1 forwards; }
+    @keyframes arrow-first {
+      0%, 2% { stroke-dashoffset: 1; opacity: 0; }
+      2.01% { stroke-dashoffset: 1; opacity: 1; }
+      6% { stroke-dashoffset: .87; }
+      10% { stroke-dashoffset: .67; }
+      14% { stroke-dashoffset: .50; }
+      17% { stroke-dashoffset: .48; }
+      22% { stroke-dashoffset: .29; }
+      27% { stroke-dashoffset: .14; }
+      30%, 100% { stroke-dashoffset: 0; opacity: 1; }
+    }
+    @keyframes arrow-second {
+      0%, 28% { stroke-dashoffset: 1; opacity: 0; }
+      28.01% { stroke-dashoffset: 1; opacity: 1; }
+      32% { stroke-dashoffset: .90; }
+      36% { stroke-dashoffset: .65; }
+      39% { stroke-dashoffset: .50; }
+      42% { stroke-dashoffset: .48; }
+      48% { stroke-dashoffset: .25; }
+      53%, 100% { stroke-dashoffset: 0; opacity: 1; }
+    }
+    @keyframes arrow-wing-left { 0%, 52% { stroke-dashoffset: 1; opacity: 0; } 52.01% { stroke-dashoffset: 1; opacity: 1; } 55% { stroke-dashoffset: .7; } 58%, 100% { stroke-dashoffset: 0; opacity: 1; } }
+    @keyframes arrow-wing-right { 0%, 57% { stroke-dashoffset: 1; opacity: 0; } 57.01% { stroke-dashoffset: 1; opacity: 1; } 60% { stroke-dashoffset: .7; } 63%, 100% { stroke-dashoffset: 0; opacity: 1; } }
+    @keyframes arrow-complete { 0%, 63% { opacity: 0; } 64%, 100% { opacity: 1; } }
+    @keyframes arrow-courses { 0%, 63% { opacity: 1; } 64%, 100% { opacity: 0; } }
+    @keyframes arrow-wiggle {
+      0%, 23%, 100% { transform: translate(0,0) rotate(0); }
+      4.6% { transform: translate(-1.5px,.4px) rotate(-1.3deg); }
+      9.66% { transform: translate(1.5px,-.6px) rotate(.9deg); }
+      14.72% { transform: translate(-.8px,0) rotate(-.55deg); }
+      18.86% { transform: translate(.5px,0) rotate(.25deg); }
+    }
+    @keyframes cta-wiggle {
+      0%, 23%, 100% { transform: translate(0,0) rotate(0); }
+      4.6% { transform: translate(-2px,0) rotate(-1.4deg); }
+      9.66% { transform: translate(2px,-1px) rotate(1.1deg); }
+      14.72% { transform: translate(-1px,0) rotate(-.7deg); }
+      18.86% { transform: translate(1px,0) rotate(.3deg); }
+    }
+    @media (hover: hover) and (pointer: fine) { .test-link:hover .cta-art { animation: cta-wiggle 2s ease-out infinite; } }
     .test-link:focus-visible { outline: 5px solid #237cef; outline-offset: 3px; }
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
     @media (prefers-reduced-motion: reduce) {
       .micro, .motion-part, .accent-text { animation: none !important; }
+      .draw-arrow svg { animation: none !important; transform: none !important; }
+      .draw-arrow .arrow-ink { animation: none !important; stroke-dashoffset: 0 !important; opacity: 1 !important; }
+      .draw-arrow .arrow-complete, .draw-arrow .arrow-png { animation: none !important; opacity: 1 !important; }
+      .draw-arrow .arrow-courses { animation: none !important; opacity: 0 !important; }
+      .test-link:hover .cta-art { animation: none !important; }
     }
   </style>
 </head>
 <body>
   <main id="stage" aria-label="城市纯玩计划长图，可上下滑动浏览">
     <div id="art">
-      <img class="tile" src="assets/page-1-clean.webp" width="1080" height="1440" alt="城市纯玩计划首页：城市地图与七位游玩中的人物" fetchpriority="high">
-      <img class="tile" src="assets/page-2-clean.webp" width="1080" height="1440" alt="活动简介与街头巷尾玩法" loading="lazy">
-      <img class="tile" src="assets/page-3-clean.webp" width="1080" height="1440" alt="红薯街头玩法与发呆补给站" loading="lazy">
-      <img class="tile" src="assets/page-4-clean.webp" width="1080" height="1440" alt="测测你的玩起人格，点击开测" loading="lazy">
+      <img class="tile" src="assets/page-1-yellow-title-base.webp" width="1080" height="1440" alt="城市纯玩计划首页：城市地图与七位游玩中的人物" fetchpriority="high">
+      <img class="tile" src="assets/page-2-photo-base.webp?v=1" width="1080" height="1440" alt="活动简介与街头巷尾玩法" loading="lazy">
+      <img class="tile" src="assets/page-3-photo-base.webp?v=1" width="1080" height="1440" alt="红薯街头玩法与发呆补给站" loading="lazy">
+      <img class="tile" src="assets/page-4-frame-base.webp?v=1" width="1080" height="1440" alt="测测你的玩起人格，点击开测" loading="lazy">
 
-      <img class="art-layer micro bike" src="assets/figure-bike.webp" alt="">
-      <img class="art-layer micro journal" src="assets/figure-journal.webp" alt="">
-      <img class="art-layer micro chair" src="assets/figure-chair.webp" alt="">
-      <img class="art-layer micro walker" src="assets/figure-walker.webp" alt="">
-      <img class="art-layer micro dog" src="assets/figure-dog.webp" alt="">
-      <img class="art-layer micro runner" src="assets/figure-runner.webp" alt="">
-      <img class="art-layer micro lounger" src="assets/figure-lounger.webp" alt="">
+      <img class="art-layer hero-title" src="assets/hero-title-yellow.webp" alt="城市纯玩计划，9月10日至9月22日">
+      <span class="art-layer micro bike actor-rig" data-actor="bike"><img class="rig-source" src="assets/motion-actor-bike-still.webp" alt=""></span>
+      <span class="art-layer micro journal actor-rig" data-actor="journal"><img class="rig-source" src="assets/motion-actor-journal-still.webp" alt=""></span>
+      <span class="art-layer micro chair actor-rig" data-actor="chair"><img class="rig-source" src="assets/motion-actor-chair-still.webp" alt=""></span>
+      <span class="art-layer micro walker actor-rig" data-actor="walker"><img class="rig-source" src="assets/motion-actor-walker-designer-final-still.webp" alt=""></span>
+      <span class="art-layer micro dog actor-rig" data-actor="dog"><img class="rig-source" src="assets/motion-actor-dog-still.webp" alt=""></span>
+      <span class="art-layer micro runner actor-rig" data-actor="runner"><img class="rig-source" src="assets/motion-actor-runner-still.webp" alt=""></span>
+      <span class="art-layer micro lounger actor-rig" data-actor="lounger"><img class="rig-source" src="assets/motion-actor-lounger-still.webp" alt=""></span>
       <img class="art-layer accent-text word-one" src="assets/asset-37.webp" alt="" loading="lazy">
       <img class="art-layer accent-text word-two" src="assets/asset-36.webp" alt="" loading="lazy">
       <img class="art-layer accent-text word-three" src="assets/asset-46.webp" alt="" loading="lazy">
@@ -139,37 +206,106 @@
       <img class="art-layer motion-part motion-number-1" src="assets/motion-number-1.webp" alt="" loading="lazy">
       <img class="art-layer motion-part motion-number-2" src="assets/motion-number-2.webp" alt="" loading="lazy">
       <img class="art-layer motion-part motion-number-3" src="assets/motion-number-3.webp" alt="" loading="lazy">
-      <img class="art-layer motion-part motion-road-1" src="assets/motion-road-1.webp" alt="" loading="lazy">
-      <img class="art-layer motion-part motion-road-2" src="assets/motion-road-2.webp" alt="" loading="lazy">
-      <img class="art-layer motion-part motion-road-3" src="assets/motion-road-3.webp" alt="" loading="lazy">
-      <img class="art-layer motion-part motion-road-4" src="assets/motion-road-4.webp" alt="" loading="lazy">
-      <img class="art-layer motion-part motion-road-5" src="assets/motion-road-5.webp" alt="" loading="lazy">
-      <img class="art-layer motion-part motion-road-6" src="assets/motion-road-6.webp" alt="" loading="lazy">
-      <img class="art-layer motion-part motion-hill-sitter" src="assets/motion-hill-sitter.webp" alt="" loading="lazy">
-      <img class="art-layer motion-part motion-hill-lounger" src="assets/motion-hill-lounger.webp" alt="" loading="lazy">
+      <img class="art-layer motion-part motion-road-yellow" src="assets/native-road-yellow.webp?v=1" alt="" loading="lazy">
+      <img class="art-layer motion-part motion-road-upper" src="assets/native-road-upper.webp?v=1" alt="" loading="lazy">
+      <img class="art-layer motion-part motion-road-left-pair" src="assets/native-road-left-pair.webp?v=1" alt="" loading="lazy">
+      <img class="art-layer motion-part motion-road-right-pair" src="assets/native-road-right-pair.webp?v=1" alt="" loading="lazy">
+      <img class="art-layer motion-part motion-road-lower" src="assets/native-road-lower.webp?v=1" alt="" loading="lazy">
+      <img class="art-layer motion-part motion-road-bottom-pair" src="assets/native-road-bottom-pair.webp?v=1" alt="" loading="lazy">
+      <img class="art-layer motion-part motion-hill-sitter" data-lawn-actor="sitter" src="assets/lawn-sitter-still.webp" alt="" loading="lazy">
+      <img class="art-layer motion-part motion-hill-lounger" data-lawn-actor="lounger" src="assets/lawn-lounger-still.webp" alt="" loading="lazy">
+      <img class="art-layer footer-search" src="assets/footer-search.png" alt="小红书，搜索城市纯玩计划" loading="lazy">
 
       <div class="carousel" data-row="street" role="group" tabindex="0" aria-label="街头巷尾红薯照片，左右滑动切换 A、B、C">
-        <div class="slot-paper" aria-hidden="true"></div><div class="slot-paper" aria-hidden="true"></div>
         <div class="cover-card" data-card="0"><img src="assets/asset-40.webp" alt="红薯 A 街头照片"></div>
         <div class="cover-card" data-card="1"><img src="assets/asset-41.webp" alt="红薯 B 街头照片"></div>
         <div class="cover-card" data-card="2"><img src="assets/asset-42.webp" alt="红薯 C 街头照片"></div>
         <span class="sr-only" aria-live="polite"></span>
       </div>
       <div class="carousel" data-row="rest" role="group" tabindex="0" aria-label="发呆补给站红薯照片，左右滑动切换 A、B、C">
-        <div class="slot-paper" aria-hidden="true"></div><div class="slot-paper" aria-hidden="true"></div>
         <div class="cover-card" data-card="0"><img src="assets/asset-43.webp" alt="红薯 A 发呆照片"></div>
         <div class="cover-card" data-card="1"><img src="assets/asset-44.webp" alt="红薯 B 发呆照片"></div>
         <div class="cover-card" data-card="2"><img src="assets/asset-45.webp" alt="红薯 C 发呆照片"></div>
         <span class="sr-only" aria-live="polite"></span>
       </div>
-      <a class="test-link" href="../test.html" aria-label="点击开测，进入城市纯玩计划人格测试"><img class="cta-yellow" src="assets/cta-yellow.webp" alt=""><img class="cta-type" src="assets/cta-type.webp" alt="">点击开测</a>
+      <span class="test-anchor" aria-hidden="true"></span>
+    </div>
+    <div class="draw-arrow" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 533 948" focusable="false">
+        <defs>
+          <!-- Ownership masks separate the two passes at the crossing. A wide
+               draw mask alone would expose a stub of the later stroke early. -->
+          <path id="arrow-later-course" d="M 190 317 C 239 292 280 277 322 264 C 383 244 426 244 445 308 C 466 370 474 512 457 666 C 447 786 432 874 417 922"/>
+          <path id="arrow-crossing-strip" d="M 72 -20 L 130 -20 L 241 230 L 251 250 L 260 270 L 269 290 L 278 310 L 286 330 L 293 350 L 301 370 L 311 402 L 273 414 L 264 370 L 257 350 L 249 330 L 240 310 L 232 290 L 223 270 L 213 250 L 203 230 Z"/>
+          <mask id="arrow-first-region" maskUnits="userSpaceOnUse" x="0" y="0" width="533" height="948" style="mask-type:luminance">
+            <rect width="533" height="948" fill="white"/>
+            <use href="#arrow-later-course" fill="none" stroke="black" stroke-width="96" stroke-linecap="round"/>
+            <use href="#arrow-crossing-strip" fill="white"/>
+          </mask>
+          <mask id="arrow-second-region" maskUnits="userSpaceOnUse" x="0" y="0" width="533" height="948" style="mask-type:luminance">
+            <rect width="533" height="948" fill="black"/>
+            <use href="#arrow-later-course" fill="none" stroke="white" stroke-width="96" stroke-linecap="round"/>
+            <use href="#arrow-crossing-strip" fill="black"/>
+          </mask>
+          <mask id="arrow-first-draw" maskUnits="userSpaceOnUse" x="0" y="0" width="533" height="948" style="mask-type:alpha">
+            <path class="arrow-ink arrow-first" pathLength="1" d="M 100 12 C 160 112 250 274 289 382 C 317 466 337 530 292 557 C 231 594 107 574 51 514 C 24 485 17 452 17 420 C 63 387 115 356 171 329"/>
+          </mask>
+          <mask id="arrow-second-draw" maskUnits="userSpaceOnUse" x="0" y="0" width="533" height="948" style="mask-type:alpha">
+            <path class="arrow-ink arrow-second" pathLength="1" d="M 128 351 C 203 308 265 281 322 264 C 383 244 426 244 445 308 C 466 370 474 512 457 666 C 447 786 432 874 417 922"/>
+          </mask>
+          <mask id="arrow-wings-draw" maskUnits="userSpaceOnUse" x="0" y="0" width="533" height="948" style="mask-type:alpha">
+            <path class="arrow-ink arrow-wing-left" pathLength="1" d="M 417 923 L 307 800"/>
+            <path class="arrow-ink arrow-wing-right" pathLength="1" d="M 417 923 L 518 813"/>
+            <rect class="arrow-complete" x="0" y="0" width="533" height="948" fill="white"/>
+          </mask>
+        </defs>
+        <g class="arrow-courses">
+          <g mask="url(#arrow-first-region)"><image href="assets/blue-arrow.png" width="533" height="948" mask="url(#arrow-first-draw)"/></g>
+          <g mask="url(#arrow-second-region)"><image href="assets/blue-arrow.png" width="533" height="948" mask="url(#arrow-second-draw)"/></g>
+        </g>
+        <image class="arrow-png" href="assets/blue-arrow.png" width="533" height="948" mask="url(#arrow-wings-draw)"/>
+      </svg>
     </div>
   </main>
+  <a class="test-link" href="../test.html" aria-label="点击开测，进入城市纯玩计划人格测试"><span class="cta-art"><img class="cta-yellow" src="assets/cta-yellow.webp" alt=""><img class="cta-type" src="assets/cta-type.webp" alt=""></span>点击开测</a>
+  <span class="safe-bottom" aria-hidden="true"></span>
   <script>
     (() => {
       const DESIGN_WIDTH = 1080;
       const DESIGN_HEIGHT = 5760;
       const stage = document.getElementById('stage');
+      const anchor = document.querySelector('.test-anchor');
+      const button = document.querySelector('.test-link');
+      const safeBottom = document.querySelector('.safe-bottom');
+      const arrow = document.querySelector('.draw-arrow');
+      let scheduled = false;
+      let arrowInView = false;
+      let buttonDocked = false;
+      function updateArrow() {
+        const drawing = buttonDocked && arrowInView;
+        arrow.classList.toggle('is-available', drawing);
+        arrow.classList.toggle('is-active', drawing);
+      }
+      function placeButton() {
+        scheduled = false;
+        const box = anchor.getBoundingClientRect();
+        const viewport = window.visualViewport;
+        const bottom = viewport ? viewport.offsetTop + viewport.height : window.innerHeight;
+        const gap = 24 + safeBottom.getBoundingClientRect().height;
+        const floatingTop = bottom - gap - box.height;
+        const docked = box.top <= floatingTop;
+        button.style.position = docked ? 'absolute' : 'fixed';
+        button.style.left = `${box.left + (docked ? window.scrollX : 0)}px`;
+        button.style.top = `${docked ? box.top + window.scrollY : floatingTop}px`;
+        button.style.width = `${box.width}px`;
+        button.style.height = `${box.height}px`;
+        button.dataset.placement = docked ? 'docked' : 'floating';
+        buttonDocked = docked;
+        updateArrow();
+      }
+      function scheduleButton() {
+        if (!scheduled) { scheduled = true; requestAnimationFrame(placeButton); }
+      }
       function fit() {
         const width = Math.min(window.innerWidth, DESIGN_WIDTH);
         const scale = width / DESIGN_WIDTH;
@@ -177,9 +313,23 @@
         stage.style.width = `${width}px`;
         stage.style.height = `${DESIGN_HEIGHT * scale}px`;
         document.documentElement.classList.add('ready');
+        placeButton();
       }
       fit();
       window.addEventListener('resize', fit, { passive: true });
+      window.addEventListener('scroll', scheduleButton, { passive: true });
+      window.visualViewport?.addEventListener('resize', scheduleButton, { passive: true });
+      window.visualViewport?.addEventListener('scroll', scheduleButton, { passive: true });
+      if ('IntersectionObserver' in window) {
+        const arrowObserver = new IntersectionObserver(entries => {
+          arrowInView = entries.some(entry => entry.isIntersecting && entry.intersectionRatio >= .25);
+          updateArrow();
+        }, { threshold: .25 });
+        arrowObserver.observe(arrow);
+      } else {
+        arrowInView = true;
+        updateArrow();
+      }
 
       document.querySelectorAll('.carousel').forEach(carousel => {
         const cards = [...carousel.querySelectorAll('.cover-card')];
@@ -304,5 +454,6 @@
       });
     })();
   </script>
+  <script src="rig-motion.js?v=20261001-road-lawn-cta-1" defer></script>
 </body>
 </html>
